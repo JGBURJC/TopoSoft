@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private MediaPlayer mpObscene;
     private Drawable skin = null;
 
-    private int skinActual = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         initializeSystem();
         setContentView(R.layout.activity_main);
 
-        frasesPredeterminadas();
         mpNormal = MediaPlayer.create(this, R.raw.audiobtnnormal);
         mpObscene = MediaPlayer.create(this, R.raw.audiobtnobsceno);
     }
@@ -141,45 +140,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Method to click
-     *
-     * @param view The view of the instance
-     */
-    public void clicker(View view) {
-        usuario.clicar();
-        if (usuario.getContador()==50){
-            txPuntos.setText("CREA TU FRASE");
-        }
-        txPuntos.setText(Integer.toString(usuario.getContador()));
-        if (modo == 0) {
-            randomSentence(usuario.getNormalSentencePool());
-            mpNormal.start();
-        } else {
-            randomSentence(usuario.getObsceneSentencePool());
-            mpObscene.start();
-        }
-    }
-
-    public void randomSentence(@NonNull List<String> sentencesPool) {
-        int randomRange = sentencesPool.size();
-        int randomValue = random.nextInt(randomRange);
-        String sentence = sentencesPool.get(randomValue);
-        TextView randomSentence = findViewById(R.id.tx_frases_bonitas);
-        randomSentence.setText(sentence);
-    }
-
-
     public List<String> getPoolNormalSentences() {
         return poolNormalSentences;
-    }
-
-    public void setpoolNormalSentences(List<String> poolNormalSentences) {
-        this.poolNormalSentences = poolNormalSentences;
-    }
-
-    public void setpoolObsceneSentences(List<String> poolObsceneSentences) {
-        this.poolObsceneSentences = poolObsceneSentences;
     }
 
     /**
@@ -188,8 +150,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void showTienda(@SuppressWarnings("UnusedParameters") View view) {
         setContentView(R.layout.interfazprincipal);
-        txPuntos = (TextView) findViewById(R.id.tx_puntos_tienda);
-        txPuntos.setText(Integer.toString(usuario.getContador()));
     }
 
     public void showAyuda(@SuppressWarnings("UnusedParameters") View view) {
@@ -209,12 +169,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view The view of the instance
      */
-    public void showObsceno(@SuppressWarnings("UnusedParameters") View view) {
-        modo = 1;
-        setContentView(R.layout.interfazobscene);
-        txPuntos = (TextView) findViewById(R.id.tx_puntos);
-        txPuntos.setText(Integer.toString(usuario.getContador()));
-    }
+
 
     /**
      * Cambia la interfaz al menu normal
@@ -240,11 +195,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view The view of the instance
      */
     public void atras(View view) {
-        if (modo == 0) {
             showMenu(view);
-
-        } else
-            showObsceno(view);
     }
 
     /**
@@ -256,57 +207,6 @@ public class MainActivity extends AppCompatActivity {
         showTienda(view);
 
     }
-
-    /**
-     * Establece la skin que el usuario tenga selecionada
-     *
-     * @param view The view of the instance
-     */
-
-
-    /**
-     * Permite al usuario comprar skins si tiene los puntos necesarios
-     *
-     * @param view The view of the instance
-     */
-    public void pressed(View view) {
-        switch (view.getId()) {
-            case R.id.btn_defecto:
-                skinActual = 0;
-                break;
-            case R.id.btn_skin_1:
-                if (usuario.getSkinsCompradas().contains("Castaña") || usuario.pago(500)) {
-                    skinActual = 1;
-                }
-                break;
-            case R.id.btn_skin_2:
-                if (usuario.getSkinsCompradas().contains("Pikachu") || usuario.pago(500)) {
-                    skinActual = 2;
-                }
-                break;
-            case R.id.btn_skin_3:
-                if (usuario.getSkinsCompradas().contains("Steve") || usuario.pago(500)) {
-                    skinActual = 3;
-                }
-                break;
-            case R.id.btn_skin_4:
-                if (usuario.getSkinsCompradas().contains("Shrek") || usuario.pago(500)) {
-                    skinActual = 4;
-                }
-                break;
-            case R.id.btn_galeria:
-                skinActual = 5;
-                loadImage();
-                if (skin == null) {
-                    skinActual = 0;
-                }
-                break;
-            default:
-                LOGGER.log(Level.WARNING,"Something has gone wrong");
-                break;
-        }
-    }
-
     ActivityResultLauncher<Intent> activityLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -400,36 +300,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Establece las frases iniciales.
-    public void frasesPredeterminadas() {
-        String a = "";
-        ArrayList<String> n = usuario.getNormalSentencePool();
-        n.add(a);
-        ArrayList<String> o = usuario.getObsceneSentencePool();
-        o.add(a);
-        ArrayList<String> normales = new ArrayList<>(
-                Arrays.asList("El único modo de hacer un gran trabajo es amar lo que haces", "Cuanto más duramente trabajo, más suerte tengo",
-                        "La lógica te llevará de la a a la z. la imaginación te llevará a cualquier lugar", "A veces la adversidad es lo que necesitas encarar para ser exitoso"));
-        setpoolNormalSentences(normales);
-        ArrayList<String> obscenas = new ArrayList<>(
-                Arrays.asList("El metodo cascada es el mejor", "ETA es una gran nación", "Lo que nosotros hemos hecho, cosa que no hizo usted, es engañar a la gente",
-                        "Tú y yo tenemos una cita y tu ropa no está invitada.", "Tienes cara de ser el 9 que le falta a mi 6."));
-        setpoolObsceneSentences(obscenas);
-    }
+
 
     /**
      * Permite al usuario reiniciar su progresso a cambio de obtener más puntos al hacer click permanentemente
      *
      * @param view The view of the instance
      */
-    public void modoPrestigio(View view) {
-        if (usuario.getContador() > REGISTER_POINTS) {
-            usuario.setModoPrestigio();
-        } else {
-            Toast toast = Toast.makeText(this, "Consigue " + REGISTER_POINTS + " puntos para desbloquear esta opción", Toast.LENGTH_LONG);
-            toast.show();
-        }
-    }
-
 
     public void ACTS(View view) {
         TextView ae = findViewById(R.id.defecto);
@@ -440,27 +317,6 @@ public class MainActivity extends AppCompatActivity {
         } else { // si no es Visible, lo pones
             ae.setVisibility(View.VISIBLE);
             ac.setVisibility(View.VISIBLE);
-        }
-    }
-
-    public void ACT(View view) {
-        TextView ae = findViewById(R.id.generador);
-        TextView ac = findViewById(R.id.creador);
-
-        TextView ad = findViewById(R.id.mb);
-        TextView ag = findViewById(R.id.ayudaPrestigio);
-        if (ae.getVisibility() == View.VISIBLE) { //si es Visible lo pones Gone
-            ae.setVisibility(View.GONE);
-            ac.setVisibility(View.GONE);
-
-            ad.setVisibility(View.GONE);
-            ag.setVisibility(View.GONE);
-        } else { // si no es Visible, lo pones
-            ae.setVisibility(View.VISIBLE);
-            ac.setVisibility(View.VISIBLE);
-
-            ad.setVisibility(View.VISIBLE);
-            ag.setVisibility(View.VISIBLE);
         }
     }
 }

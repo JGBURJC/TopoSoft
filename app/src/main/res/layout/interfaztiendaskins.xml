@@ -92,7 +92,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.138"
-        app:srcCompat="@drawable/tienda_background_image" />
+         />
 
     <ImageButton
         android:id="@+id/btn_skin_1"

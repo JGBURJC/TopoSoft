@@ -1,10 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_interfaz_menu">
+
+    <ScrollView
+        android:focusable="false"
+        android:layout_width="match_parent"
+        android:layout_height="630dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="62dp"
+        android:layout_marginBottom="39dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusable="false">
+
+            <EditText
+                android:id="@+id/editTextTextMultiLine9"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="Instalación: La primera vez que descargas la aplicación, asegúrate de hacerlo desde una fuente confiable y segura. Una vez descargada, sigue las instrucciones de instalación para que la aplicación se instale correctamente en tu dispositivo."
+                android:textColor="@color/white"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/editTextTextMultiLine8"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Interfaz de usuario: Al abrir la aplicación, deberías encontrar una interfaz fácil de usar con diferentes herramientas y opciones. Puedes explorar estas opciones para ver lo que ofrece la aplicación. Si tienes alguna pregunta sobre cómo utilizar una herramienta específica, asegúrate de revisar la documentación de ayuda que viene con la aplicación."
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/editTextTextMultiLine7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:textColor="@color/white"
+                android:text="Importación de datos: Si tienes datos topográficos que deseas utilizar en la aplicación, puedes importarlos utilizando la opción de importación. Asegúrate de seguir las instrucciones de la aplicación para importar tus datos correctamente."
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/editTextTextMultiLine6"
+                android:layout_width="match_parent"
+                android:focusable="false"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Utilización de herramientas: Una vez que hayas importado tus datos, puedes comenzar a utilizar las herramientas topográficas disponibles en la aplicación. Las herramientas pueden incluir la creación de perfiles topográficos, la medición de distancias y ángulos, la visualización en 3D y mucho más."
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/editTextTextMultiLine5"
+                android:layout_width="match_parent"
+                android:focusable="false"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Guardado de resultados: A medida que utilices las herramientas, es importante guardar los resultados para que puedas volver a ellos más tarde si es necesario. La mayoría de las aplicaciones ofrecen una opción para guardar los resultados, así que asegúrate de hacerlo regularmente."
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/editTextTextMultiLine4"
+                android:layout_width="match_parent"
+                android:focusable="false"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Actualizaciones:Para asegurarte de que estás utilizando la última versión de la aplicación, asegúrate de buscar actualizaciones regularmente y actualizar la aplicación cuando sea necesario."
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/editTextTextMultiLine3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:textColor="@color/white"
+                android:text="Soporte técnico: Si tienes algún problema con la aplicación o necesitas ayuda con algo, asegúrate de buscar soporte técnico en la documentación de ayuda de la aplicación o en línea. Si no puedes encontrar la ayuda que necesitas, puedes contactar al equipo de soporte técnico de la aplicación para obtener ayuda adicional."
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/btn_volver_atras"
@@ -12,7 +107,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#E6E6E6"
         android:onClick="showMenu"
-        android:text="VOLVER"
+        android:text="ATRÁS"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,4 +116,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
