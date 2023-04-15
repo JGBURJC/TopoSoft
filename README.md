@@ -22,3 +22,5 @@ Si estás interesado en contribuir al desarrollo de esta herramienta software, p
 Si tienes alguna pregunta o comentario acerca de este proyecto, no dudes en ponerte en contacto conmigo en mi dirección de correo electrónico: j.guillo2018@urjc.es
 
  ![alt-text](https://github.com/JGBURJC/TopoSoft/blob/master/imagesReadme/logourjc.png?raw=true "URJC LOGO")
+ 
+  ![alt-text](https://github.com/JGBURJC/TopoSoft/blob/master/imagesReadme/logo.jpg?raw=true "APP LOGO")
