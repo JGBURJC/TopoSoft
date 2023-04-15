@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
     private static final Logger LOGGER = Logger.getLogger(MainActivity.class.getName());
 
     private static final int PERMISSION_CODE = 1;
-    private static final int REGISTER_POINTS = 10000000;
     private Random random = new Random();
     private int modo = 0;
     private List<String> poolNormalSentences;
@@ -60,22 +59,12 @@ public class MainActivity extends AppCompatActivity {
     public final File fichero = new File(getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "usuario.bat");
     private Usuario usuario = new Usuario();
 
-    private TextView txPuntos;
-    private MediaPlayer mpNormal;
-    private MediaPlayer mpObscene;
-    private Drawable skin = null;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         initializeSystem();
         setContentView(R.layout.activity_main);
-
-        mpNormal = MediaPlayer.create(this, R.raw.audiobtnnormal);
-        mpObscene = MediaPlayer.create(this, R.raw.audiobtnobsceno);
     }
 
     @Override
@@ -215,12 +204,9 @@ public class MainActivity extends AppCompatActivity {
                         Uri path = Objects.requireNonNull(result.getData()).getData();
                         InputStream image = getContentResolver().openInputStream(path);
                         Bitmap view = BitmapFactory.decodeStream(image);
-                        skin = new BitmapDrawable(getResources(), view);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
-                } else {
-                    skin = null;
                 }
             });
 
@@ -239,12 +225,9 @@ public class MainActivity extends AppCompatActivity {
                 Uri path = Objects.requireNonNull(data).getData();
                 InputStream image = getContentResolver().openInputStream(path);
                 Bitmap view = BitmapFactory.decodeStream(image);
-                skin = new BitmapDrawable(getResources(), view);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        } else {
-            skin = null;
         }
     }
 
@@ -253,27 +236,9 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view The viwe of the instance
      */
-    public void mejorarClicks(View view) {
-        int a = usuario.getValorClick() * 10;
 
-        if (usuario.pago(usuario.getValorClick() * 10)) {
-            usuario.aplicarMejoraClicks();
-            txPuntos.setText(String.valueOf(usuario.getContador()));
-        } else {
-            Snackbar mySnackbar = Snackbar.make(view, "No tienes dinero suficiente. Te hacen falta " + a + " monedas", 1000);
-            mySnackbar.show();
-        }
-    }
 
-    public void mejorarClicks2(View view) {
-        if (usuario.pago(usuario.getValorClick() * 100)) {
-            usuario.aplicarMejoraClicksPlus();
-            txPuntos.setText(String.valueOf(usuario.getContador()));
-        } else {
-            Snackbar mySnackbar = Snackbar.make(view, "No tienes dinero suficiente", 1000);
-            mySnackbar.show();
-        }
-    }
+
 
 
     /**
