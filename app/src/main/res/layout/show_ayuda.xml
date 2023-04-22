@@ -105,6 +105,8 @@
         android:id="@+id/btn_volver_atras"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="306dp"
+        android:layout_marginBottom="14dp"
         android:backgroundTint="#E6E6E6"
         android:onClick="showMenu"
         android:text="ATRÁS"
@@ -115,5 +117,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="30dp"
+        app:srcCompat="@android:drawable/ic_menu_help" />
 
 </RelativeLayout>
