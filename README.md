@@ -1,3 +1,4 @@
+# ESTO ES LA VERSIÓN INICIAL
 # Herramienta Software para la Utilización de Herramientas Topográficas
 
 Este proyecto consiste en una herramienta software desarrollada para facilitar la utilización de herramientas topográficas. La aplicación emplea los datos obtenidos mediante arduino y crea los recorridos obtenidos mediante sensores.
